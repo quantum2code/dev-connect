@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@dev-connect/ui/components/card";
 
 import { SignOutButton } from "@/components/sign-out-button";
+import { PostLab } from "@/components/post-lab";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export default async function DashboardPage() {
@@ -30,6 +31,7 @@ export default async function DashboardPage() {
           <SignOutButton />
         </CardContent>
       </Card>
+      <PostLab email={user.email ?? user.id} />
     </div>
   );
 }
