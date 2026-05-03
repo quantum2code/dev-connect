@@ -4,7 +4,7 @@ import { Button } from "@dev-connect/ui/components/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@dev-connect/ui/components/card";
 import { Input } from "@dev-connect/ui/components/input";
 import { Label } from "@dev-connect/ui/components/label";
-import { Loader2, LogIn, UserPlus } from "lucide-react";
+import { Github, Loader2, LogIn, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as React from "react";
@@ -70,6 +70,24 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     }
   }
 
+  async function handleGithubAuth() {
+    setLoading(true);
+    setError(null);
+    setMessage(null);
+
+    const { error: signInError } = await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    if (signInError) {
+      setError(signInError.message);
+      setLoading(false);
+    }
+  }
+
   return (
     <Card className="mx-auto w-full max-w-md">
       <CardHeader>
@@ -105,6 +123,10 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
         <div className="mt-4 grid gap-3">
           <Button type="button" variant="outline" onClick={handleGoogleAuth} disabled={loading}>
             Continue with Google
+          </Button>
+          <Button type="button" variant="outline" onClick={handleGithubAuth} disabled={loading}>
+            <Github />
+            Continue with GitHub
           </Button>
           <p className="text-muted-foreground text-xs">
             {isSignIn ? (
