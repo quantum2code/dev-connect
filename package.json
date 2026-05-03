@@ -1,0 +1,30 @@
+{
+  "name": "dev-connect",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "check-types": "pnpm -r check-types",
+    "dev:web": "pnpm --filter web dev",
+    "db:push": "pnpm --filter @dev-connect/db db:push",
+    "db:studio": "pnpm --filter @dev-connect/db db:studio",
+    "db:generate": "pnpm --filter @dev-connect/db db:generate",
+    "db:migrate": "pnpm --filter @dev-connect/db db:migrate"
+  },
+  "dependencies": {
+    "@dev-connect/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@dev-connect/config": "workspace:*",
+    "@types/node": "^22.13.14",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@10.23.0"
+}
