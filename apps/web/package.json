@@ -10,6 +10,8 @@
   "dependencies": {
     "@dev-connect/env": "workspace:*",
     "@dev-connect/ui": "workspace:*",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.55.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "dotenv": "catalog:",
     "lucide-react": "catalog:",

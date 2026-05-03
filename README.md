@@ -40,6 +40,19 @@ pnpm run dev
 
 Open [http://localhost:3001](http://localhost:3001) in your browser to see the fullstack application.
 
+## Supabase Auth
+
+This app uses Supabase for authentication.
+
+Add these env vars to `apps/web/.env`:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+```
+
+Then configure your Supabase auth redirect URLs to include `/auth/callback`.
+
 ## UI Customization
 
 React web apps in this stack share shadcn/ui primitives through `packages/ui`.
